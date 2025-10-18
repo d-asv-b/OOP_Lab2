@@ -1,10 +1,12 @@
 
 #include "../include/Binary.hpp"
 
-Binary::Binary() : Binary(0) {}
+Binary::Binary() : Binary(0) {
+    this->data = Array(MAX_SIZE, 0);
+}
 
 Binary::Binary(unsigned decimalNumber) {
-    std::memset(this->data, 0, MAX_SIZE);
+    this->data = Array(MAX_SIZE, 0);
 
     size_t i = 0;
     while (decimalNumber > 0) {
@@ -16,7 +18,31 @@ Binary::Binary(unsigned decimalNumber) {
 }
 
 Binary::Binary(const Binary& other) {
-    std::memcpy(this->data, other.data, MAX_SIZE);
+    if (this != &other) {
+        this->data = other.data;
+    }
+}
+
+Binary::Binary(Binary&& other) {
+    if (this != &other) {
+        this->data = std::move(other.data);
+    }
+}
+
+Binary& Binary::operator=(const Binary& other) {
+    if (this != &other) {
+        this->data = other.data;
+    }
+
+    return *this;
+}
+
+Binary& Binary::operator=(Binary&& other) noexcept {
+    if (this != &other) {
+        this->data = std::move(other.data);
+    }
+
+    return *this;
 }
 
 Binary Binary::operator+(const Binary& other) const {
@@ -52,7 +78,13 @@ Binary Binary::operator-(const Binary& other) const {
 }
 
 bool Binary::operator==(const Binary& other) const {
-    return std::memcmp(this->data, other.data, MAX_SIZE) == 0;
+    for (size_t i = 0; i < MAX_SIZE; ++i) {
+        if (this->data[i] != other.data[i]) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 bool Binary::operator<(const Binary& other) const {

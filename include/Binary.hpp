@@ -4,25 +4,39 @@
 #include <cstddef>
 #include <cstring>
 
+#include "Array.hpp"
+
 #define MAX_SIZE (size_t)32
 
 class Binary {
 private:
-    unsigned char data[MAX_SIZE];
+    // Массив символов для хранения числа
+    Array data;
 public:
+    // Конструктор по умолчанию
     Binary();
+    // Конструктор из числа без знака
     Binary(unsigned);
-
+    // Конструктор копирования
     Binary(const Binary&);
+    // Конструктор перемещения
+    Binary(Binary&&);
 
+    // Оператор копирования
+    Binary& operator=(const Binary&);
+    // Оператор перемещения
+    Binary& operator=(Binary&&) noexcept; 
+
+    // Оператор сложения
     Binary operator+(const Binary&) const;
+    // Оператор вычитание
     Binary operator-(const Binary&) const;
 
+    // Операторы сравнения
     bool operator>(const Binary&) const;
     bool operator<(const Binary&) const;
     bool operator==(const Binary&) const;
 
-    Binary& operator=(const Binary&);
-
+    // Метод для получения десятичного представления числа
     unsigned toDecimal() const;
 };
