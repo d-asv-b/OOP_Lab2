@@ -17,6 +17,20 @@ Binary::Binary(unsigned decimalNumber) {
     }
 }
 
+Binary::Binary(std::initializer_list<char> list) {
+    this->data = Array(MAX_SIZE, 0);
+
+    size_t i = 0;
+    for (char bit : list) {
+        if (i >= MAX_SIZE) {
+            break;
+        }
+        
+        this->data[i] = bit;
+        ++i;
+    }
+}
+
 Binary::Binary(const Binary& other) {
     if (this != &other) {
         this->data = other.data;

@@ -1,6 +1,7 @@
 #include "../include/Array.hpp"
 #include <cstddef>
 #include <cstdlib>
+#include <stdexcept>
 
 Array::Array() { }
 
@@ -49,10 +50,18 @@ Array::~Array() {
 }
 
 char& Array::operator[](size_t idx) {
+    if (idx >= size) {
+        throw std::out_of_range("Array index out of range");
+    }
+
     return this->data_ptr[idx];
 }
 
 char Array::operator[](size_t idx) const {
+    if (idx >= size) {
+        throw std::out_of_range("Array index out of range");
+    }
+
     return this->data_ptr[idx];
 }
 

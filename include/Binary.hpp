@@ -1,5 +1,6 @@
 #pragma once
 
+#include <initializer_list>
 #include <iostream>
 #include <cstddef>
 #include <cstring>
@@ -17,6 +18,9 @@ public:
     Binary();
     // Конструктор из числа без знака
     Binary(unsigned);
+    // Конструктор из массива символов
+    Binary(std::initializer_list<char>);
+
     // Конструктор копирования
     Binary(const Binary&);
     // Конструктор перемещения
