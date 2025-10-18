@@ -13,9 +13,10 @@ install_manifest.txt
 compile_commands.json
 
 _deps
+build
 lib
 bin
 
-tests
+*_tests
 *.a
 *_exe
