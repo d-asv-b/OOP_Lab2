@@ -1,7 +1,7 @@
 #include "./include/Binary.hpp"
 
 int main() {
-    Binary b(124);
+    Binary b(5);
     Binary b2(44);
 
     std::cout << b.toDecimal() << "\n";

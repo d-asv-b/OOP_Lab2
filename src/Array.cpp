@@ -7,14 +7,14 @@ Array::Array() { }
 
 Array::Array(size_t size) {
     if (size > 0) {
-        this->data_ptr = new char[size]();
+        this->data_ptr = new unsigned char[size]();
         this->size = this->capacity = size;
     }
 }
 
 Array::Array(size_t size, char default_val) {
     if (size > 0) {
-        this->data_ptr = new char[size];
+        this->data_ptr = new unsigned char[size];
         std::memset(this->data_ptr, default_val, size);
 
         this->size = this->capacity = size;
@@ -26,7 +26,7 @@ Array::Array(const Array& other) {
         this->size = other.size;
         this->capacity = other.capacity;
 
-        this->data_ptr = new char[this->capacity];
+        this->data_ptr = new unsigned char[this->capacity];
         std::memcpy(this->data_ptr, other.data_ptr, this->size);
     }
 }
@@ -49,7 +49,7 @@ Array::~Array() {
     this->size = this->capacity = 0;
 }
 
-char& Array::operator[](size_t idx) {
+unsigned char& Array::operator[](size_t idx) {
     if (idx >= size) {
         throw std::out_of_range("Array index out of range");
     }
@@ -57,7 +57,7 @@ char& Array::operator[](size_t idx) {
     return this->data_ptr[idx];
 }
 
-char Array::operator[](size_t idx) const {
+unsigned char Array::operator[](size_t idx) const {
     if (idx >= size) {
         throw std::out_of_range("Array index out of range");
     }
@@ -72,7 +72,7 @@ Array& Array::operator=(const Array& other) {
         this->size = other.size;
         this->capacity = other.capacity;
 
-        this->data_ptr = new char[this->capacity];
+        this->data_ptr = new unsigned char[this->capacity];
         std::memcpy(this->data_ptr, other.data_ptr, this->size);
     }
 
@@ -99,11 +99,11 @@ size_t Array::GetSize() const {
     return this->size;
 }
 
-void Array::PushBack(char val) {
+void Array::PushBack(unsigned char val) {
     if (this->size + 1 > this->capacity) {
         this->capacity *= 2;
         
-        char* new_mem = new char[this->capacity]();
+        unsigned char* new_mem = new unsigned char[this->capacity]();
         std::memcpy(new_mem, this->data_ptr, this->size);
 
         delete[] this->data_ptr;
@@ -114,7 +114,7 @@ void Array::PushBack(char val) {
     ++this->size;
 }
 
-char Array::PopBack() {
+unsigned char Array::PopBack() {
     --this->size;
     return this->data_ptr[size];
 }

@@ -17,7 +17,7 @@ Binary::Binary(unsigned decimalNumber) {
     }
 }
 
-Binary::Binary(std::initializer_list<char> list) {
+Binary::Binary(std::initializer_list<unsigned char> list) {
     this->data = Array(MAX_SIZE, 0);
 
     size_t i = 0;
@@ -25,7 +25,7 @@ Binary::Binary(std::initializer_list<char> list) {
         if (i >= MAX_SIZE) {
             break;
         }
-        
+
         this->data[i] = bit;
         ++i;
     }

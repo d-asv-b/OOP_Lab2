@@ -6,7 +6,7 @@
 class Array {
 private:
     // Указатель на динамический массив символов
-    char* data_ptr = nullptr;
+    unsigned char* data_ptr = nullptr;
 
     // Размер массива
     size_t size = 0;
@@ -33,16 +33,16 @@ public:
     Array& operator=(Array&&) noexcept;
 
     // Операторы индексирования
-    char& operator[](size_t idx);
-    char operator[](size_t idz) const;
+    unsigned char& operator[](size_t idx);
+    unsigned char operator[](size_t idz) const;
 
     // Метод получения размера
     size_t GetSize() const;
 
     // Методы добавления
-    void PushBack(char);
+    void PushBack(unsigned char);
     // Метод удаления
-    char PopBack();
+    unsigned char PopBack();
     
     // Метод очистки
     void Clear();

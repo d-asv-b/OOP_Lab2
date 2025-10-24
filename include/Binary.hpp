@@ -7,7 +7,7 @@
 
 #include "Array.hpp"
 
-#define MAX_SIZE (size_t)32
+#define MAX_SIZE (size_t)128
 
 class Binary {
 private:
@@ -19,7 +19,7 @@ public:
     // Конструктор из числа без знака
     Binary(unsigned);
     // Конструктор из массива символов
-    Binary(std::initializer_list<char>);
+    Binary(std::initializer_list<unsigned char>);
 
     // Конструктор копирования
     Binary(const Binary&);
